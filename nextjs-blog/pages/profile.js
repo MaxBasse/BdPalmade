@@ -79,9 +79,9 @@ export default function Profile() {
     codeUrl: "../UnityGame/Build/UnityGame.wasm"
   });
 
-  function sendDataToUnity() {
-    sendMessage("GameController", "UpdateMessage", "plop la zone");
-  }
+  //function sendDataToUnity() {
+  //  sendMessage("GameController", "UpdateMessage", "plop la zone");
+  //}
   
     return (
       <div className={styles.body}>
