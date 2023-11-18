@@ -1,0 +1,63 @@
+.menuitems{
+    display: inline;
+    padding-right: 50px;
+    text-decoration: none;
+
+}
+
+.body{
+    background-image: url("../public/photo.png");
+    width: 100%;
+    height: 100%;
+    position: absolute;  
+    display: block;
+    z-index: 0;
+    background-size: cover;
+    background-attachment: local;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.menulist{
+    padding: 20px;
+    border-color: rgb(0, 0, 0);
+   
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+.unity{
+    display: block;
+    margin-right: auto;
+    width: 80%;
+    position: relative;
+    
+}
+
+
+.menubar{
+    background-color: rgb(36, 36, 36);
+}
+
+.link:link{
+    font-size: xx-large;
+    font-weight: bold;
+    color:rgb(0, 128, 151);
+    
+}
+
+.link:visited{
+    color:rgb(0, 108, 148);
+    
+}
+
+.link:hover{
+    color:rgb(107, 163, 187);
+    
+}
+
+.link:active{
+    
+    color:rgb(107, 187, 131);
+    
+}

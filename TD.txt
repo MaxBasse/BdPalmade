@@ -1,0 +1,75 @@
+create table bar_brunel 
+    (
+        b integer,
+        nom varchar(15),
+        adresse varchar(25),
+        primary key (b)
+    );
+
+create table sert_brunel
+    (
+        b integer references bar_brunel,
+        biere varchar(10),
+        qte integer,
+        primary key(b, biere)
+    );
+
+create table frequente_brunel
+    (
+        buveur varchar(20),
+        b integer references bar_brunel,
+        primary key(buveur, b)
+    );
+
+create table aime_brunel
+    (
+        buveur varchar(20) references frequente_brunel,
+        biere varchar(10) references sert_brunel,
+        primary key(buveur, biere)
+    );
+
+copy bar_brunel from 'PATH' with delimiter ',';
+copy sert_brunel from 'PATH' with delimiter ',';
+copy frequente_brunel from 'PATH' with delimiter ',';
+copy aime_brunel from 'PATH' with delimiter ',';
+
+insert into bar_brunel VALUES (1, 'Oui','3 rue des roses');
+insert into bar_brunel VALUES (2, 'Non', '2 rue des tabourets d'argent');
+insert into sert_brunel VALUES (1,'Leffe', 150);
+insert into sert_brunel VALUES (1, '1664', 125);
+insert into sert_brunel VALUES (2,'Grim', 150);
+insert into sert_brunel VALUES (2, 'Heineken', 175);
+
+insert into frequente_brunel VALUES ('Louis',1);
+insert into frequente_brunel VALUES ('Coco',1);
+insert into frequente_brunel VALUES ('Max',1);
+insert into frequente_brunel VALUES ('Eliot',2);
+
+insert into aime_brunel VALUES ('Max','Grim');
+insert into aime_brunel VALUES ('Louis','Grim');
+insert into aime_brunel VALUES ('Coco','1664');
+insert into aime_brunel VALUES ('Eliot','Heineken');
+
+
+
+select biere from frequente_brunel, sert_brunel where buveur='Dupont';
+select buveur from F,S,A where F.buveur = A.buveur, F.b = S.b, S.b=A.b;
+
+update bar_brunel
+    set nom='new name'
+    where b=i;
+
+update sert_brunel
+    set qte=qte*2
+    where b=i;
+
+
+delete from bar_brunel where b=j and biere in (select biere from sert_brunel where b=j except select biere from aime_brunel where buveur='aurelie");
+
+grant all on bar_brunel, sert_brunel, frequente_brunel, aime_brunel to public
+
+
+begin;
+insert into frequente_brunel VALUES ('aurelie', 2)
+insert into aime_brunel VALUES ('aurelie','Kro')
+
