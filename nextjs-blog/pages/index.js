@@ -37,6 +37,7 @@ export default function Home() {
         
       <form onSubmit={(e) => {handleSubmit(); e.preventDefault();}}>
         <input className={styles.form} type='email'  id='email' name='email' placeholder='prenom.nom@XXXX.icam.fr' pattern='.+@*.icam.fr'/>
+        <input type='submit' name='Submit'/> 
       </form>
       
       <footer className={styles.footer}>
