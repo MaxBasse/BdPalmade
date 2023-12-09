@@ -2,7 +2,7 @@ import Head from 'next/head';
 import router from 'next/router'
 import styles from '../styles/Home.module.css';
 import Link from 'next/link'
-
+import { sql } from '@vercel/postgres';
 
 function MenuItem(args) {
   return <li className={styles.menuitems}>
@@ -22,7 +22,10 @@ function handleSubmit(){
  
 }
 
-
+async function getDb(score){
+  const {rows, fields} =
+    await sql`SELECT * FROM test WHERE Score > ${score};`;
+}
 
 export default function Home() {
   
@@ -35,7 +38,9 @@ export default function Home() {
               <MenuItem title="Oui" link="https://google.com"/>
           </div>
       </header>
-        
+        <text>
+          ifhof
+        </text>
       <form onSubmit={(e) => {handleSubmit(); e.preventDefault();}}>
         <input className={styles.form} type='email'  id='email' name='email' placeholder='prenom.nom@XXXX.icam.fr' pattern='.+@*.icam.fr'/>
         <input className={styles.formsubmit} type='submit' name='Submit'/> 
