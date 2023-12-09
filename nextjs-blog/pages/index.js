@@ -23,10 +23,7 @@ function handleSubmit(){
  
 }
 
-async function getDb(){
-  const {rows, fields} =
-    await sql`SELECT Email FROM test WHERE Score = 10;`;
-}
+
 
 export default function Home() {
   return (
@@ -37,7 +34,7 @@ export default function Home() {
               <MenuItem title="Test" link="/profile"/>
               <MenuItem title="Oui" link="https://google.com"/>
               <Suspense fallback={<MenuItem title="{getDb(5000)}" link="https://google.com"/>}>
-                <text>{getDb(5000)}</text>
+                <text>{s}</text>
               </Suspense>
           </div>
       </header>
