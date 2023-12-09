@@ -2,7 +2,18 @@ import Head from 'next/head';
 import router from 'next/router'
 import styles from '../styles/Home.module.css';
 import Link from 'next/link'
-
+import { sql } from '@vercel/postgres';
+import { NextResponse } from 'next/server';
+ 
+export async function GET(request) {
+  try {
+    const result =
+      await sql`CREATE TABLE Pets ( Name varchar(255), Owner varchar(255) );`;
+    return NextResponse.json({ result }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ error }, { status: 500 });
+  }
+}
 function MenuItem(args) {
   return <li className={styles.menuitems}>
     <Link className={styles.link} href={args.link ? args.link : "/"}>  {args.title}  </Link>
