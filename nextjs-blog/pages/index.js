@@ -3,6 +3,7 @@ import router from 'next/router'
 import styles from '../styles/Home.module.css';
 import Link from 'next/link'
 import { sql } from '@vercel/postgres';
+import { Suspense } from 'react';
 
 function MenuItem(args) {
   return <li className={styles.menuitems}>
@@ -28,7 +29,6 @@ async function getDb(score){
 }
 
 export default function Home() {
-print(getDb(4000))
   return (
     <div className={styles.body}>
       <header className={styles.header}>
@@ -36,6 +36,9 @@ print(getDb(4000))
               <MenuItem title="Home" link="/"/>
               <MenuItem title="Test" link="/profile"/>
               <MenuItem title="Oui" link="https://google.com"/>
+              <Suspense fallback={<MenuItem title="{getDb(5000)}" link="https://google.com"/>}>
+                <MenuItem title={getDb(5000)} link="https://google.com"/>
+              </Suspense>
           </div>
       </header>
       <form onSubmit={(e) => {handleSubmit(); e.preventDefault();}}>
