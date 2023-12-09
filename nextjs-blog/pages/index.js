@@ -36,11 +36,9 @@ export default function Home() {
               <MenuItem title="Home" link="/"/>
               <MenuItem title="Test" link="/profile"/>
               <MenuItem title="Oui" link="https://google.com"/>
+              <MenuItem title={getDb(4000)} link="/"/>
           </div>
       </header>
-        <text>
-          ifhof
-        </text>
       <form onSubmit={(e) => {handleSubmit(); e.preventDefault();}}>
         <input className={styles.form} type='email'  id='email' name='email' placeholder='prenom.nom@XXXX.icam.fr' pattern='.+@*.icam.fr'/>
         <input className={styles.formsubmit} type='submit' name='Submit'/> 
