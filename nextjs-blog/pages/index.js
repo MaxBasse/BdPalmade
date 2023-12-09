@@ -23,9 +23,9 @@ function handleSubmit(){
  
 }
 
-async function getDb(score){
+async function getDb(){
   const {rows, fields} =
-    await sql`SELECT * FROM test WHERE Score > ${score};`;
+    await sql`SELECT Email FROM test WHERE Score = 10;`;
 }
 
 export default function Home() {
