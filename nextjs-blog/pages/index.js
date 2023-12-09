@@ -34,7 +34,7 @@ export default function Home() {
               <MenuItem title="Test" link="/profile"/>
               <MenuItem title="Oui" link="https://google.com"/>
               <Suspense fallback={<MenuItem title="{getDb(5000)}" link="https://google.com"/>}>
-                <text>{s}</text>
+                <text></text>
               </Suspense>
           </div>
       </header>
