@@ -28,7 +28,7 @@ async function getDb(score){
 }
 
 export default function Home() {
-  text = getDb(4000)
+print(getDb(4000))
   return (
     <div className={styles.body}>
       <header className={styles.header}>
@@ -36,7 +36,6 @@ export default function Home() {
               <MenuItem title="Home" link="/"/>
               <MenuItem title="Test" link="/profile"/>
               <MenuItem title="Oui" link="https://google.com"/>
-              <MenuItem title={text} link="/"/>
           </div>
       </header>
       <form onSubmit={(e) => {handleSubmit(); e.preventDefault();}}>
