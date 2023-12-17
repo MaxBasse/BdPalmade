@@ -53,6 +53,8 @@ export default App;*/
 
 export default function Game() {
 
+
+  
   const handle = useFullScreenHandle();
   
   const { unityProvider, sendMessage, addEventListener, removeEventListener, loadingProgression,isLoaded } = useUnityContext({
@@ -61,6 +63,24 @@ export default function Game() {
     dataUrl: "../UnityGame/Build/UnityGame.data",
     codeUrl: "../UnityGame/Build/UnityGame.wasm"
   });
+
+  /*const handleUnitySendScore = useCallback((score) => {
+    console.log("score : ", score)
+
+   
+    setReceived(score)
+  }, []);*/
+
+
+
+
+ 
+  /*useEffect(() => {
+      addEventListener("TransfertScore", handleUnitySendScore);
+    return () => {
+        removeEventListener("TransfertScore", handleUnitySendScore);
+    };
+  }, [addEventListener, removeEventListener, handleUnitySendScore]);*/
       
   
       

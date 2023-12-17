@@ -27,19 +27,23 @@ function Menu(){
 
 
 
-/*function App() {
-  const [received, setReceived] = useState(0)
+/*const [received, setReceived] = useState(0)
 
- 
+  const { unityProvider, sendMessage, addEventListener, removeEventListener, loadingProgression,isLoaded } = useUnityContext({
+    loaderUrl: "../UnityGame/Build/UnityGame.loader.js",
+    frameworkUrl: "../UnityGame/Build/UnityGame.framework.js",
+    dataUrl: "../UnityGame/Build/UnityGame.data",
+    codeUrl: "../UnityGame/Build/UnityGame.wasm"
+  });
 
 
   function sendDataToUnity() {
     sendMessage("GameController", "UpdateMessage", "plop la zone");
   }
 
-  const handleUnityButtonClicked = useCallback((count) => {
-    console.log("btn clicked", count)
-    setReceived(count)
+  const handleUnitySendScore = useCallback((score) => {
+    console.log("score : ", score)
+    setReceived(score)
   }, []);
 
 
@@ -47,29 +51,24 @@ function Menu(){
 
  
   useEffect(() => {
-    addEventListener("ButtonClicked", handleUnityButtonClicked);
+      addEventListener("TransfertScore", handleUnitySendScore);
     return () => {
-      removeEventListener("ButtonClicked", handleUnityButtonClicked);
+        removeEventListener("TransfertScore", handleUnitySendScore);
     };
-  }, [addEventListener, removeEventListener, handleUnityButtonClicked]);
+  }, [addEventListener, removeEventListener, handleUnitySendScore]);
  
  
 
   return (
     <div className="App">
-      <h2>Test Jeux Unity sur web</h2>
-      
+      <h2>Jeu du Ninja Sauteur</h2>
+      <Unity style={{ width: 1000, height: 600 }} unityProvider={unityProvider} />
       <div>
-        <button onClick={sendDataToUnity}>Envoyer</button>
-      </div>
-      <div>
-        Nombre de cliques reçus : {received}
+        Score dernier essai : {received}
       </div>
     </div>
   );
-}
-
-export default App;*/
+}*/
 
 export default function Profile() {
   
