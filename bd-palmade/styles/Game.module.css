@@ -14,6 +14,8 @@
     overflow: scroll;
 }
 
+
+
 @media (orientation : portrait) {
     .unity{
         display: block;
@@ -21,8 +23,12 @@
         width: 100%;
         top: 59px;
         position: absolute;
-      
         
+        
+    }
+
+    .fscreenbutton{
+        display: none;
     }
      
 }
@@ -33,10 +39,19 @@
         z-index: 4;
         
         height: calc(100vh - 60px);
+        width: calc(calc(100vh - 60px)*16/9);
         bottom: 0%;
         position: absolute;
-      
-        
+    }
+
+    .fscreenbutton{
+        display: block;
+        position: absolute;
+        z-index: 4;
+        top: 65px;
+        height: 25px;
+        width: 100px;
+        left: calc((calc(100vh - 60px)*16/9) + 5px);
     }
 }
 

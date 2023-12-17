@@ -65,7 +65,20 @@ export default function Game() {
   
       
       return (
-            <div className={styles.body} onResize={handle.enter}>
+            <div className={styles.body}>
+              <header className={style.header}>
+                <div className={style.menulist}>
+                  <MenuItem title="HOME" link="/"/>
+                  <MenuItem title="TEST" link="/game/game"/>
+                  <MenuItem title="OUI" link="https://google.com"/>
+                </div>
+              </header>
+              <button className={styles.fscreenbutton} onClick={handle.enter}>Plein Écran</button>
+              <Unity className={styles.unity} unityProvider={unityProvider} />  
+        
+
+
+              <FullScreen handle={handle}>
               <header className={style.header}>
                 <div className={style.menulist}>
                   <MenuItem title="HOME" link="/"/>
@@ -74,9 +87,6 @@ export default function Game() {
                 </div>
               </header>
               <Unity className={styles.unity} unityProvider={unityProvider} />  
-
-              <FullScreen handle={handle}>
-                <Unity className={styles.unity} unityProvider={unityProvider} />  
               </FullScreen>
 
             </div>
