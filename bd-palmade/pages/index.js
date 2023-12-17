@@ -28,9 +28,9 @@ export default function Home() {
     <div className={styles.body}>
       <header className={styles.header}>
           <div className={styles.menulist}>
-              <MenuItem title="Home" link="/"/>
-              <MenuItem title="Test" link="/game/game"/>
-              <MenuItem title="Oui" link="https://google.com"/>
+              <MenuItem title="HOME" link="/"/>
+              <MenuItem title="TEST" link="/game/game"/>
+              <MenuItem title="OUI" link="https://google.com"/>
           </div>
       </header>
       <form className={styles.form} onSubmit={(e) => {handleSubmit(); e.preventDefault();}}>
