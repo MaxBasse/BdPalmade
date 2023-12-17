@@ -6,7 +6,7 @@
 }
 
 .body{
-    orientation: landscape;
+    transform: rotate(-90deg);
     background-image: url("../public/photo.png");
     width: 100%;
     height: 100%;

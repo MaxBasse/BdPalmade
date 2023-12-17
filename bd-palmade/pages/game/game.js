@@ -5,7 +5,10 @@ import { Unity, useUnityContext } from "react-unity-webgl";
 
 function isMobile() {
   const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+  console.log(regex.test(navigator.userAgent));
+  console.log('test');
   return regex.test(navigator.userAgent);
+  
 }
 
 
@@ -61,15 +64,15 @@ export default function Game() {
     dataUrl: "../UnityGame/Build/UnityGame.data",
     codeUrl: "../UnityGame/Build/UnityGame.wasm"
   });
-
-  
-    
       
-    if(isMobile) {
+    if(isMobile()) {
+      
+  
+      
       return (
-
+          
           <div className={stylesm.body}>
-            <Unity className={stylesm.unity} unityProvider={unityProvider} /> 
+            <Unity className={stylesm.unity} unityProvider={unityProvider} />  
           </div>
         );
       } else {
