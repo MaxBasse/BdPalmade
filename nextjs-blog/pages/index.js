@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { sql } from '@vercel/postgres';
 import { Suspense } from 'react';
 
+
 function MenuItem(args) {
   return <li className={styles.menuitems}>
     <Link className={styles.link} href={args.link ? args.link : "/"}>  {args.title}  </Link>
@@ -28,12 +29,11 @@ async function getDb(score){
 }
 
 export default function Home() {
-
-     console.log({
-     POSTGRES_URL: process.env.POSTGRES_URL,
-      POSTGRES_URL_NON_POOLING: process.env.POSTGRES_URL_NON_POOLING
-    });
-
+  console.log({
+    POSTGRES_URL: process.env.POSTGRES_URL,
+     POSTGRES_URL_NON_POOLING: process.env.POSTGRES_URL_NON_POOLING
+   });
+  
 
   return (
     <div className={styles.body}>
