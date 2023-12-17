@@ -1,9 +1,10 @@
-import stylesm from '../../styles/GameMobile.module.css';
+import style from '../../styles/Home.module.css';
 import styles from '../../styles/Game.module.css';
 import Link from 'next/link'
 import { Unity, useUnityContext } from "react-unity-webgl";
 import { Suspense } from 'react';
 import {isMobileOnly} from 'react-device-detect';
+import {MenuItem} from '../../PageComps/pagecomps'
 
 
 
@@ -61,11 +62,17 @@ export default function Game() {
   });
       
     if(isMobileOnly) {
-  
+      
       return (
-                
-            <div className={stylesm.body}>
-              <Unity className={stylesm.unity} unityProvider={unityProvider} />  
+            <div className={styles.body}>
+              <header className={style.header}>
+                <div className={style.menulist}>
+                  <MenuItem title="HOME" link="/"/>
+                  <MenuItem title="TEST" link="/game/game"/>
+                  <MenuItem title="OUI" link="https://google.com"/>
+                </div>
+              </header>
+              <Unity className={styles.unity} unityProvider={unityProvider} />  
             </div>
         
         );

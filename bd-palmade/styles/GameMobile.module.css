@@ -1,13 +1,10 @@
 .body{
-    transform: rotate(-90deg);
-    -o-transform: rotate(-90deg);
-    -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-
+    transform: rotate(90);
+  
+    right: 0%;
     background-image: url("../public/photo.png");
-    width: 100vh;
-    height: 100vw;
+    width: 100vw;
+    height: 100vh;
     position: absolute;  
     display: block;
     z-index: 0;
@@ -21,8 +18,11 @@
     
     
     
-    width: 80vh;
-    height: 80vw;
+    display: block;
+    margin-right: auto;
+    width: 80%;
+    position: relative;
+    
    
     
 }
