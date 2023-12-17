@@ -3,14 +3,8 @@ import styles from '../../styles/Game.module.css';
 import Link from 'next/link'
 import { Unity, useUnityContext } from "react-unity-webgl";
 import { Suspense } from 'react';
+import {isMobileOnly} from 'react-device-detect';
 
-function isMobile() {
-  const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-  console.log(regex.test(navigator.userAgent));
-  console.log('test');
-  return regex.test(navigator.userAgent);
-  
-}
 
 
 /*function App() {
@@ -66,17 +60,14 @@ export default function Game() {
     codeUrl: "../UnityGame/Build/UnityGame.wasm"
   });
       
-    if(isMobile()) {
-      
-  
-      
+    if(isMobileOnly) {
+    
       return (
-          
-          <Suspense fallback={<div></div>}>
+                
             <div className={stylesm.body}>
               <Unity className={stylesm.unity} unityProvider={unityProvider} />  
             </div>
-          </Suspense>
+        
         );
       } else {
 
