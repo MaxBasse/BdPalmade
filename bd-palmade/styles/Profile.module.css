@@ -40,9 +40,10 @@
 }
 
 .link:link{
-    font-size: xx-large;
+    font-size: 2em;
+    font-optical-sizing: auto;
     font-weight: bold;
-    color:rgb(0, 128, 151);
+    color:rgb(107, 119, 121);
     
 }
 

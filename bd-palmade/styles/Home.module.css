@@ -99,14 +99,14 @@
 }
 
 .link:link{
-  font-size: xx-large;
+  font-size: 2em;
   font-weight: bold;
-  color:rgb(0, 128, 151);
+  color:rgb(76, 76, 77);
   
 }
 
 .link:visited{
-  color:rgb(0, 108, 148);
+  color:rgb(151, 151, 151);
   
 }
 
