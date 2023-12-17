@@ -1,9 +1,8 @@
 import style from '../../styles/Home.module.css';
 import styles from '../../styles/Game.module.css';
-import Link from 'next/link'
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import { Unity, useUnityContext } from "react-unity-webgl";
 import { Suspense } from 'react';
-import {isMobileOnly} from 'react-device-detect';
 import {MenuItem} from '../../PageComps/pagecomps'
 
 
@@ -53,6 +52,8 @@ import {MenuItem} from '../../PageComps/pagecomps'
 export default App;*/
 
 export default function Game() {
+
+  const handle = useFullScreenHandle();
   
   const { unityProvider, sendMessage, addEventListener, removeEventListener, loadingProgression,isLoaded } = useUnityContext({
     loaderUrl: "../UnityGame/Build/UnityGame.loader.js",
@@ -61,10 +62,10 @@ export default function Game() {
     codeUrl: "../UnityGame/Build/UnityGame.wasm"
   });
       
-    if(isMobileOnly) {
+  
       
       return (
-            <div className={styles.body}>
+            <div className={styles.body} onResize={handle.enter}>
               <header className={style.header}>
                 <div className={style.menulist}>
                   <MenuItem title="HOME" link="/"/>
@@ -73,19 +74,13 @@ export default function Game() {
                 </div>
               </header>
               <Unity className={styles.unity} unityProvider={unityProvider} />  
+
+              <FullScreen handle={handle}>
+                <Unity className={styles.unity} unityProvider={unityProvider} />  
+              </FullScreen>
+
             </div>
         
         );
-      } else {
-
-        return (
-         
-          <div className={styles.body}>
-            <Unity className={styles.unity} unityProvider={unityProvider} /> 
-          </div>
-      
-      
-        )
-      }
-    
+  
 }

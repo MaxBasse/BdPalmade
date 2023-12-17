@@ -38,8 +38,7 @@ export default function Home() {
         <input className={styles.formsubmit} type='submit' name='Submit' /> 
       </form>
       
-      <footer className={styles.footer}>
-      </footer>
+      
 
 
       
