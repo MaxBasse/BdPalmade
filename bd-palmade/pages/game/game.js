@@ -1,7 +1,12 @@
-import styles from '../../styles/Profile.module.css';
+import stylesm from '../../styles/GameMobile.module.css';
+import styles from '../../styles/Game.module.css';
 import Link from 'next/link'
 import { Unity, useUnityContext } from "react-unity-webgl";
 
+function isMobile() {
+  const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+  return regex.test(navigator.userAgent);
+}
 
 
 /*function App() {
@@ -58,10 +63,24 @@ export default function Game() {
   });
 
   
-    return (
-      <div className={styles.body}>
-        <Unity className={styles.unity} unityProvider={unityProvider} /> 
-      </div>
+    
       
-    );
+    if(isMobile) {
+      return (
+
+          <div className={stylesm.body}>
+            <Unity className={stylesm.unity} unityProvider={unityProvider} /> 
+          </div>
+        );
+      } else {
+
+        return (
+
+          <div className={styles.body}>
+            <Unity className={styles.unity} unityProvider={unityProvider} /> 
+          </div>
+      
+        )
+      }
+    
 }
