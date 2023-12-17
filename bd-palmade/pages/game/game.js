@@ -99,13 +99,7 @@ export default function Game() {
 
 
               <FullScreen handle={handle}>
-              <header className={style.header}>
-                <div className={style.menulist}>
-                  <MenuItem title="HOME" link="/"/>
-                  <MenuItem title="TEST" link="/game/game"/>
-                  <MenuItem title="OUI" link="https://google.com"/>
-                </div>
-              </header>
+              
               <Unity className={styles.unity} unityProvider={unityProvider} />  
               </FullScreen>
 
