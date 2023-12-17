@@ -61,7 +61,7 @@ export default function Game() {
   });
       
     if(isMobileOnly) {
-    
+  
       return (
                 
             <div className={stylesm.body}>
@@ -72,11 +72,11 @@ export default function Game() {
       } else {
 
         return (
-          <Suspense fallback={<div></div>}>
+         
           <div className={styles.body}>
             <Unity className={styles.unity} unityProvider={unityProvider} /> 
           </div>
-          </Suspense>
+      
       
         )
       }
