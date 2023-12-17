@@ -8,7 +8,7 @@
 
 .menuitems{
   display: inline;
-  padding-right: 7%;
+  padding-right: clamp(0px, 7%, 50px);
   text-decoration: none;
 
 }
@@ -59,13 +59,14 @@
   top: 0%;
   text-align: center;
 
-  max-width: 500px;
+
   z-index: 5;
   
-  font-size: larger;
+  font-size:20px;
+
   background-color: rgb(82, 82, 82);
   height: 50px;
-  width: 50%;
+  width: 280px;
   color: #f7f7f7;
   padding-left: 10px ;
   border-style: solid;
@@ -82,13 +83,13 @@
   text-align: center;
   top: 50%;
 
-  max-width: 300px;
+  width: 155px;
 
   z-index: 4;
   font-size: larger;
   background-color: rgb(82, 82, 82);
   height: 50px;
-  width: 30%;
+  
   color: #f7f7f7;
   padding-left: 10px ;
   border-style: solid;
