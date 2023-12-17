@@ -2,6 +2,7 @@ import stylesm from '../../styles/GameMobile.module.css';
 import styles from '../../styles/Game.module.css';
 import Link from 'next/link'
 import { Unity, useUnityContext } from "react-unity-webgl";
+import { Suspense } from 'react';
 
 function isMobile() {
   const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
@@ -71,17 +72,20 @@ export default function Game() {
       
       return (
           
-          <div className={stylesm.body}>
-            <Unity className={stylesm.unity} unityProvider={unityProvider} />  
-          </div>
+          <Suspense fallback={<div></div>}>
+            <div className={stylesm.body}>
+              <Unity className={stylesm.unity} unityProvider={unityProvider} />  
+            </div>
+          </Suspense>
         );
       } else {
 
         return (
-
+          <Suspense fallback={<div></div>}>
           <div className={styles.body}>
             <Unity className={styles.unity} unityProvider={unityProvider} /> 
           </div>
+          </Suspense>
       
         )
       }
