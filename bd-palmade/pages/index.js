@@ -2,8 +2,7 @@
 import router from 'next/router'
 import styles from '../styles/Home.module.css';
 import Link from 'next/link'
-import { sql } from '@vercel/postgres';
-import { Suspense } from 'react';
+
 
 
 function handleSubmit(){

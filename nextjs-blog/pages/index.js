@@ -1,9 +1,8 @@
 import router from 'next/router'
 import styles from '../styles/Home.module.css';
 import Link from 'next/link'
-import { sql } from '@vercel/postgres';
 import { Suspense } from 'react';
-
+import * as db from "../pg"
 
 function MenuItem(args) {
   return <li className={styles.menuitems}>
@@ -22,13 +21,10 @@ function handleSubmit(){
  
 }
 
-async function getDb(score){
-  const {rows, fields} =
-    await sql`SELECT Email FROM test WHERE Score  ${score};`;
-    return {rows,fields}
-}
+
 
 export default function Home() {
+
   console.log({
     POSTGRES_URL: process.env.POSTGRES_URL,
      POSTGRES_URL_NON_POOLING: process.env.POSTGRES_URL_NON_POOLING
@@ -43,7 +39,6 @@ export default function Home() {
               <MenuItem title="Test" link="/profile"/>
               <MenuItem title="Oui" link="https://google.com"/>
               <Suspense fallback={<MenuItem title="{getDb(5000)}" link="https://google.com"/>}>
-                <text>{getDb(5000)}</text>
               </Suspense>
           </div>
       </header>
