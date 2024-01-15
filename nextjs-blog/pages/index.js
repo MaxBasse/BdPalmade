@@ -2,7 +2,6 @@ import router from 'next/router'
 import styles from '../styles/Home.module.css';
 import Link from 'next/link'
 import { Suspense } from 'react';
-import * as db from "../pg"
 
 function MenuItem(args) {
   return <li className={styles.menuitems}>
