@@ -3,8 +3,6 @@ import router from 'next/router'
 import styles from '../styles/Home.module.css';
 import Link from 'next/link'
 
-
-
 function handleSubmit(){
   var emailinput = document.getElementById('email').value;
   router.push({
@@ -27,8 +25,8 @@ export default function Home() {
       <header className={styles.header}>
           <div className={styles.menulist}>
               <MenuItem title="HOME" link="/"/>
-              <MenuItem title="TEST" link="/game/game"/>
-              <MenuItem title="OUI" link="https://google.com"/>
+              <MenuItem title="JEU" link="/game/game"/>
+              <MenuItem title="CLASSEMENT" link="/scoreboards"/>
           </div>
       </header>
       <form className={styles.form} onSubmit={(e) => {handleSubmit(); e.preventDefault();}}>

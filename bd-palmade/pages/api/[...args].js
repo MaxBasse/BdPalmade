@@ -1,18 +1,19 @@
 import { Client } from "pg";
+import data from "../../config.json"
 
 export default async function handler(req,res ){
     const {method, query} = req;
     const email = query.args[0];
     const score = Math.round(query.args[1]);
     const client = new Client({
-        host: 'localhost',
-        port: 5432,
-        database: 'BDE',
-        user: 'postgres',
-        password: '1234',
+        host: data.host,
+        port: data.port,
+        database: data.database,
+        user: data.user,
+        password: data.password,
     })
-    
-    connectDb(client);
+    console.log(data)
+    await connectDb(client);
 
     switch(method){
 
@@ -23,6 +24,7 @@ export default async function handler(req,res ){
             break;
 
         case 'POST':
+            if(email=="null" || email==null) break;
             preparedStmtScore(client,email,score);
             res.status(200).json({response: "Post successful"})
             
@@ -43,18 +45,21 @@ async function connectDb(client){
 }
 
 async function queryAll(client){
-  
+    console.log("entering queryAll statement")
     const res = await client.query({text: 'SELECT * from scores ORDER BY score DESC LIMIT 10', rowMode: 'array'});
     console.log(res.rows)
-    return res.rows
     client.end()
+    return res.rows 
 
 }
 
 async function preparedStmtScore(client, email, score){    
+    console.log("entering score prepared statement")
+    
     try {
         const res = await client.query({text: 'INSERT INTO scores VALUES ($1, $2)', values: [email, score],rowMode: 'array'});
         console.log("Data successfully inserted in the database")
+        client.end()
      } catch (err) {
         console.error(err);
      } finally {
