@@ -23,8 +23,8 @@ export default function Game() {
 
   async function onScore(score){
     const queryParameters = new URLSearchParams(window.location.search)
-    const email = queryParameters.get("email")
-    
+    var email = queryParameters.get("email")
+    if(email == "") email = "null"
       await fetch('../api/'+email+"/"+ score, {
         method: 'POST',
       })
@@ -41,8 +41,6 @@ export default function Game() {
     })
     
   }
-
-
 
   useEffect(() => {
       addEventListener("TransfertScore", handleUnitySendScore);
@@ -61,14 +59,12 @@ export default function Game() {
                   <MenuItem title="CLASSEMENT" link="/scoreboards"/>
                 </div>
               </header>
-              <button className={styles.fscreenbutton} onClick={handle.enter}>Plein Écran {received}</button>
-              <button className={styles.scoreboardbutton} onClick={onScoreboardReload}>Update Scoreboard {scores[0][1]}</button>
+              <button className={styles.fscreenbutton} onClick={handle.enter}>Plein Écran</button>
+              <button className={styles.scoreboardbutton} onClick={onScoreboardReload}>Update Scoreboard</button>
 
-              <Unity className={styles.unity} onClick={handleUnitySendScore} unityProvider={unityProvider} />  
-        
-              <FullScreen handle={handle}>
+              <FullScreen className={styles.fscreen} handle={handle}>
             
-                <Unity className={styles.unity} unityProvider={unityProvider} />  
+                <Unity className={styles.unity} onClick={handleUnitySendScore} unityProvider={unityProvider} />   
 
               </FullScreen>
 

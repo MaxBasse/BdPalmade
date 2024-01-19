@@ -1,24 +1,39 @@
 
 import style from '../styles/Home.module.css';
 import styles from '../styles/Game.module.css';
-import Link from 'next/link'
 import { useState, useEffect, useCallback, Suspense } from 'react';
+import {MenuItem} from '../PageComps/pagecomps'
+import { DataGrid } from '@mui/x-data-grid';
+export default function Home() {  
+  const [scores, setScores] = useState([{id : 1, email: "data[i][0]", score: "data[i][1]"}]);  
+  var rows = [];
 
-export default function Home() {
 
-  const [scores, setScores] = useState([["arouf"],["gangsta"]]);
+  function updateRows(data, length){
+    var rows = [];
+    for(var i = 0;i<length; i ++){
+      rows[i] = {id : i, email: data[i][0], score: data[i][1]}
+    }
+
+    return rows;
+  }
+
   async function onScoreboardReload(event){
   
     const bestScores = await fetch('../api/ok', {
       method: 'GET'
     })
     bestScores.json().then(function(data){  
-      setScores(data)
+
+      
+      setScores(updateRows(data,data.length))
+      
+      rows = updateRows()
+
+
     })
     
   }
-  
-
 
 
   return (
@@ -31,14 +46,21 @@ export default function Home() {
           </div>
       </header>
 
-      <button className={styles.scoreboardbutton} onClick={onScoreboardReload}>Update Scoreboard {scores[0][1]}</button>
+      <div className={style.scoreboard}>
+
+        <DataGrid 
+        columns = {[{ field: 'email', headerName: 'Email', width: 300}, { field: 'score', headerName: 'Score', width: 300 }]} 
+        rows={scores} 
+        
+        />
+      </div>
+
+
+      <button className={styles.scoreboardbutton} onClick={onScoreboardReload}>Update Scoreboard</button>
     </div>
   );
 }
 
 
-function MenuItem(args) {
-  return <li className={style.menuitems}>
-    <Link className={style.link} href={args.link ? args.link : "/"}>  {args.title}  </Link>
-  </li>
-}
+
+

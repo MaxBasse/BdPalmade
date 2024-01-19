@@ -49,6 +49,17 @@
   
 }
 
+.scoreboard{
+
+  display: block;
+  background-color: white;
+  position: absolute;
+  z-index: 5;
+  top: 61px;
+  height: 60%;
+
+
+}
 
 .email{
 

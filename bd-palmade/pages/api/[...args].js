@@ -12,7 +12,6 @@ export default async function handler(req,res ){
         user: data.user,
         password: data.password,
     })
-    console.log(data)
     await connectDb(client);
 
     switch(method){
@@ -24,6 +23,7 @@ export default async function handler(req,res ){
             break;
 
         case 'POST':
+            console.log(email)
             if(email=="null" || email==null) break;
             preparedStmtScore(client,email,score);
             res.status(200).json({response: "Post successful"})
@@ -46,8 +46,7 @@ async function connectDb(client){
 
 async function queryAll(client){
     console.log("entering queryAll statement")
-    const res = await client.query({text: 'SELECT * from scores ORDER BY score DESC LIMIT 10', rowMode: 'array'});
-    console.log(res.rows)
+    const res = await client.query({text: 'SELECT email, MAX(score) FROM scores GROUP BY email ORDER BY MAX(score) DESC', rowMode: 'array'});
     client.end()
     return res.rows 
 
