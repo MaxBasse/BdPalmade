@@ -4,10 +4,9 @@ import styles from '../styles/Game.module.css';
 import { useState, useEffect, useCallback, Suspense } from 'react';
 import {MenuItem} from '../PageComps/pagecomps'
 import { DataGrid } from '@mui/x-data-grid';
-export default function Home() {  
-  const [scores, setScores] = useState([{id : 1, email: "data[i][0]", score: "data[i][1]"}]);  
-  var rows = [];
 
+export default function Home() {  
+  const [scores, setScores] = useState([{id : 1, email: "No data", score: "please reload"}]);  
 
   function updateRows(data, length){
     var rows = [];
@@ -17,7 +16,7 @@ export default function Home() {
 
     return rows;
   }
-
+  
   async function onScoreboardReload(event){
   
     const bestScores = await fetch('../api/ok', {
@@ -28,13 +27,13 @@ export default function Home() {
       
       setScores(updateRows(data,data.length))
       
-      rows = updateRows()
-
-
     })
     
-  }
-
+  } 
+  
+  useEffect(() => { 
+    onScoreboardReload() 
+  }, []);
 
   return (
     <div className={style.body}>
@@ -48,7 +47,7 @@ export default function Home() {
 
       <div className={style.scoreboard}>
 
-        <DataGrid 
+        <DataGrid
         columns = {[{ field: 'email', headerName: 'Email', width: 300}, { field: 'score', headerName: 'Score', width: 300 }]} 
         rows={scores} 
         

@@ -55,7 +55,7 @@ export default function Game() {
               <header className={style.header}>
                 <div className={style.menulist}>
                   <MenuItem title="HOME" link="/"/>
-                  <MenuItem title="TEST" link="/game/game"/>
+                  <MenuItem title="JEU" link="/game/game"/>
                   <MenuItem title="CLASSEMENT" link="/scoreboards"/>
                 </div>
               </header>
